@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>IcyPlay</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+ 
+    <div class="alert">
+      <span></span>
+      <div class="alert-content">
+        <span class="message"></span
+        ><button class="retry">
+          <svg
+            fill="white"
+            height="12px"
+            width="12px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+              d="M463.5 224l8.5 0c13.3 0 24-10.7 24-24l0-128c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8l119.5 0z"
+            />
+          </svg>
+        </button>
+      </div>
+      <button class="close">
+        <svg
+          fill="rgba(0,0,0,0.7)"
+          height="16px"
+          width="16px"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+        >
+          <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path
+            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="games-container"></div>
+    <div id="popup-wrapper" class="popup-container">
+      <div class="popup-content">
+        <h4 class="popup-heading">Add <u>New </u> Game</h4>
+
+        <form id="form" class="form">
+          <label for="gamename">🎮 Name</label>
+          <input
+            class="input gamename"
+            type="text"
+            value=""
+            name="gamename"
+            id="gamename"
+            required
+          />
+          <label for="userid"><span class="emoji-id">🆔</span> User Id</label>
+          <input
+            class="input userid"
+            type="text"
+            value=""
+            name="userid"
+            id="userid"
+            required
+          />
+          <label for="password"
+            ><span class="emoji-password">🔒</span> Password</label
+          >
+          <input
+            class="input password"
+            type="text"
+            value=""
+            id="password"
+            name="password"
+            required
+          />
+
+          <div class="tagsdiv"></div>
+
+          <label for="tags">Tags</label>
+          <div class="tagsgroup">
+            <input
+              class="input tags"
+              id="tags"
+              type="text"
+              value=""
+              name="tags"
+            />
+
+            <button type="button" class="addtags">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                fill="currentColor"
+                class="bi bi-tags-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"
+                />
+                <path
+                  d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <label class="logourllabel" for="logourl"
+            ><span class="imageemoji">🔗</span> Image URL</label
+          >
+<div class="logourlgroup">
+          <input
+            class="input logourl"
+            id="logourl"
+            type="text"
+            value=""
+            name="logourl"
+          />
+          <button
+          class="selectlogourl"
+          id="selectlogourl"
+          type="button"
+          value=""
+          name="selectlogourl"
+        ><svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 20" fill="none"><path d="M7 20c-1.856-.002-3.635-.7-4.947-1.94C.74 16.819.003 15.137 0 13.383V4.828a4.536 4.536 0 0 1 .365-1.843 4.75 4.75 0 0 1 1.087-1.567A5.065 5.065 0 0 1 3.096.368a5.293 5.293 0 0 1 3.888 0c.616.244 1.174.6 1.643 1.05.469.45.839.982 1.088 1.567.25.586.373 1.212.364 1.843v8.555a2.837 2.837 0 0 1-.92 2.027A3.174 3.174 0 0 1 7 16.245c-.807 0-1.582-.3-2.158-.835a2.837 2.837 0 0 1-.92-2.027v-6.22a1.119 1.119 0 1 1 2.237 0v6.22a.777.777 0 0 0 .256.547.868.868 0 0 0 .585.224c.219 0 .429-.08.586-.224a.777.777 0 0 0 .256-.546V4.828A2.522 2.522 0 0 0 7.643 3.8a2.64 2.64 0 0 0-.604-.876 2.816 2.816 0 0 0-.915-.587 2.943 2.943 0 0 0-2.168 0 2.816 2.816 0 0 0-.916.587 2.64 2.64 0 0 0-.604.876 2.522 2.522 0 0 0-.198 1.028v8.555c0 1.194.501 2.339 1.394 3.183A4.906 4.906 0 0 0 7 17.885a4.906 4.906 0 0 0 3.367-1.319 4.382 4.382 0 0 0 1.395-3.183v-6.22a1.119 1.119 0 0 1 2.237 0v6.22c-.002 1.754-.74 3.436-2.052 4.677C10.635 19.3 8.856 19.998 7 20z" fill="currentColor"></path></svg></button>
+        </div>
+          <div class="actionsgroup">
+            <div>
+              <div id="swatch">
+                <input
+                  class="theme"
+                  type="color"
+                  id="color"
+                  name="color"
+                  value="#595959"
+                />
+                <div class="info">
+                  <label for="color" class="theme-input-label">Theme</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-action-group">
+              <button type="button" class="popup-cancel">Cancel</button>
+              <button type="submit" role="submit" class="popup-submit">
+                Submit
+              </button>
+
+              <div class="lds-facebook hide">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="popup-wrapper1" class="popup-container1">
+      <div class="popup-content1">
+        <h3>Are you sure to remove<span class="remove-name"></span> ?</h3>
+        <div class="remove-confirm-group">
+          <button class="remove-confirm-yes">Yes</button>
+          <button class="remove-confirm-no">No</button>
+        </div>
+      </div>
+    </div>
+    <div id="popup-wrapper2" class="popup-container2">
+      <div class="popup-content2">
+        <h4 class="popup-heading">Edit Game</h4>
+
+        <form id="form1">
+          <input type="hidden" id="editid" name="hiddenData" value="0" />
+          <label for="gamename">🎮 Name</label>
+          <input
+            class="input gamename gamename1"
+            type="text"
+            value=""
+            name="gamename"
+            id="gamename"
+            required
+          />
+          <label for="userid"><span class="emoji-id">🆔</span> User Id</label>
+          <input
+            class="input userid userid1"
+            type="text"
+            value=""
+            name="userid"
+            id="userid"
+            required
+          />
+          <label for="password"
+            ><span class="emoji-password">🔒</span> Password</label
+          >
+          <input
+            class="input password password1"
+            type="text"
+            value=""
+            id="password"
+            name="password"
+            required
+          />
+
+          <div class="tagsdiv1"></div>
+
+          <label for="tags">Tags</label>
+          <div class="tagsgroup">
+            <input
+              class="input tags1"
+              id="tags"
+              type="text"
+              value=""
+              name="tags"
+            />
+
+            <button type="button" class="addtags1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                fill="currentColor"
+                class="bi bi-tags-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"
+                />
+                <path
+                  d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <label class="logourllabel" for="logourl"
+            ><span class="imageemoji">🔗</span> Image URL</label
+          >
+          <div class="logourlgroup">
+          <input
+            class="input logourl logourl1"
+            id="logourl"
+            type="text"
+            value=""
+            name="logourl"
+          />
+          <button
+          class="selectlogourl1"
+          id="selectlogourl1"
+          type="button"
+          value=""
+          name="selectlogourl1"
+        ><svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 20" fill="none"><path d="M7 20c-1.856-.002-3.635-.7-4.947-1.94C.74 16.819.003 15.137 0 13.383V4.828a4.536 4.536 0 0 1 .365-1.843 4.75 4.75 0 0 1 1.087-1.567A5.065 5.065 0 0 1 3.096.368a5.293 5.293 0 0 1 3.888 0c.616.244 1.174.6 1.643 1.05.469.45.839.982 1.088 1.567.25.586.373 1.212.364 1.843v8.555a2.837 2.837 0 0 1-.92 2.027A3.174 3.174 0 0 1 7 16.245c-.807 0-1.582-.3-2.158-.835a2.837 2.837 0 0 1-.92-2.027v-6.22a1.119 1.119 0 1 1 2.237 0v6.22a.777.777 0 0 0 .256.547.868.868 0 0 0 .585.224c.219 0 .429-.08.586-.224a.777.777 0 0 0 .256-.546V4.828A2.522 2.522 0 0 0 7.643 3.8a2.64 2.64 0 0 0-.604-.876 2.816 2.816 0 0 0-.915-.587 2.943 2.943 0 0 0-2.168 0 2.816 2.816 0 0 0-.916.587 2.64 2.64 0 0 0-.604.876 2.522 2.522 0 0 0-.198 1.028v8.555c0 1.194.501 2.339 1.394 3.183A4.906 4.906 0 0 0 7 17.885a4.906 4.906 0 0 0 3.367-1.319 4.382 4.382 0 0 0 1.395-3.183v-6.22a1.119 1.119 0 0 1 2.237 0v6.22c-.002 1.754-.74 3.436-2.052 4.677C10.635 19.3 8.856 19.998 7 20z" fill="currentColor"></path></svg></button>
+     </div>
+          <div class="actionsgroup">
+            <div>
+              <div id="swatch">
+                <input
+                  class="theme theme1"
+                  type="color"
+                  id="color"
+                  name="color"
+                  value="#FFFFFF"
+                />
+                <div class="info">
+                  <label class="theme-input-label" for="color">Theme</label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button type="button" class="popup-cancel popup-cancel1">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                role="submit"
+                class="popup-submit popup-submit1"
+              >
+                Submit
+              </button>
+              <div class="lds-facebook lds-facebook1 hide">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="nav-footer">
+      <div class="heading">
+        <img
+          style="margin-right: 0.3em"
+          src="images/logo.png"
+          width="30px"
+          height="30px"
+        />
+        IcyPlay
+      </div>
+
+      <div style="display: flex">
+        <button class="addnewbtn">New</button>
+        <div id="window-controls">
+          <button id="minimize">
+            <svg
+              fill="rgba(153,78,204,1)"
+              height="12px"
+              width="23px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M32 416c-17.7 0-32 14.3-32 32s14.3 32 32 32l448 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 416z"
+              />
+            </svg>
+          </button>
+          <button id="maximize">
+            <svg
+              fill="rgba(153,78,204,1)"
+              height="12px"
+              width="23px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 96l320 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L96 160c-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+              />
+            </svg>
+          </button>
+          <button id="close">
+            <svg
+              fill="rgba(153,78,204,1)"
+              height="12px"
+              width="23px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 384 512"
+            >
+              <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="backup hide">
+        Backup
+        <svg
+          style="margin-left: 0.2em"
+          xmlns="http://www.w3.org/2000/svg"
+          width="11"
+          height="11"
+          fill="currentColor"
+          class="bi bi-box-arrow-down"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z"
+          />
+        </svg>
+      </button>
+      <button class="restore hide">
+        Restore
+        <svg
+          style="margin-left: 0.2em"
+          xmlns="http://www.w3.org/2000/svg"
+          width="11"
+          height="11"
+          fill="currentColor"
+          class="bi bi-arrow-counterclockwise"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"
+          />
+          <path
+            d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"
+          />
+        </svg>
+      </button>
+
+      <button id="theme-toggle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="#994ecc"
+          class="bi bi-moon-stars-fill theme-dark-icon"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"
+          />
+          <path
+            d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="#994ecc"
+          class="bi bi-sun-fill theme-light-icon"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"
+          />
+        </svg>
+      </button>
+      <div class="menu-options">
+        <svg
+          width="16"
+          height="16"
+          class="options-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="rgba(153,78,204,1)"
+        >
+          <path
+            d="M6.17071 18C6.58254 16.8348 7.69378 16 9 16C10.3062 16 11.4175 16.8348 11.8293 18H22V20H11.8293C11.4175 21.1652 10.3062 22 9 22C7.69378 22 6.58254 21.1652 6.17071 20H2V18H6.17071ZM12.1707 11C12.5825 9.83481 13.6938 9 15 9C16.3062 9 17.4175 9.83481 17.8293 11H22V13H17.8293C17.4175 14.1652 16.3062 15 15 15C13.6938 15 12.5825 14.1652 12.1707 13H2V11H12.1707ZM6.17071 4C6.58254 2.83481 7.69378 2 9 2C10.3062 2 11.4175 2.83481 11.8293 4H22V6H11.8293C11.4175 7.16519 10.3062 8 9 8C7.69378 8 6.58254 7.16519 6.17071 6H2V4H6.17071Z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
