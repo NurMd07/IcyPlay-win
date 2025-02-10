@@ -104,6 +104,7 @@ async function updateGameInfoById(gameId, gameName, userId, password, theme, log
   if (game) {
     let localLogoUrl;
     if (game.logoUrl !== logoUrl) {
+    
       fs.existsSync(game.localLogoUrl) && fs.unlinkSync(game.localLogoUrl);
       const fileName = `image_${Date.now()}.png`; // Generate a unique file name
       const imageFilePath = join(imageDataPath, fileName);
@@ -125,13 +126,11 @@ async function updateGameInfoById(gameId, gameName, userId, password, theme, log
         
 
           localLogoUrl = imageFilePath;
-
+          game.localLogoUrl = localLogoUrl;
         } catch (e) {
           failedImage = true;
         }
       }
-    } else {
-      game.localLogoUrl = game.localLogoUrl;
     }
 
     game.gameName = gameName;
@@ -142,11 +141,6 @@ async function updateGameInfoById(gameId, gameName, userId, password, theme, log
     game.tags = tags;
     game.isPinned = isPinned;
     game.modifiedAt = modifiedAt;
-    if(localLogoUrl){
-    game.localLogoUrl = localLogoUrl;
-    }else{
-      game.localLogoUrl = '';
-    }
 
     sortByModifiedAt(db.data.games);
     await db.write();
